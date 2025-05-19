@@ -15,17 +15,23 @@
                         <ColumnDefinition Width="310*"/>
                     </Grid.ColumnDefinitions>
                     <DataGrid x:Name="dataGridProductos" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="2"/>
-                    <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="38,237,0,0" VerticalAlignment="Top" Height="42" Width="89" Grid.Column="1"/>
-                    <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="305,242,0,0" VerticalAlignment="Top" Height="37" Width="97" Grid.Column="1"/>
+                    <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="38,237,0,0" VerticalAlignment="Top" Height="42" Width="89" Grid.Column="1" Click="btnAgregar_Click"/>
+                    <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="305,242,0,0" VerticalAlignment="Top" Height="37" Width="97" Grid.Column="1" Click="btnEliminar_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="txtBusqueda" Header="Busqueda">
+            <TabItem x:Name="LL" Header="Busqueda">
                 <Grid Background="#FFE5E5E5">
-                    <ComboBox x:Name="comboTipoBusqueda" HorizontalAlignment="Left" Margin="54,23,0,0" VerticalAlignment="Top" Width="305" Height="34"/>
-                    <TextBox HorizontalAlignment="Left" Margin="45,96,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-                    <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="206,96,0,0" VerticalAlignment="Top" Height="38" Width="79"/>
-                    <TextBlock x:Name="txtResultadoBusqueda" HorizontalAlignment="Left" Margin="54,182,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="57" Width="160"/>
-                    <ProgressBar x:Name="progressIteraciones" HorizontalAlignment="Left" Height="47" Margin="337,172,0,0" VerticalAlignment="Top" Width="172" RenderTransformOrigin="0.5,0.5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="9*"/>
+                        <ColumnDefinition Width="375*"/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="comboTipoBusqueda" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" Width="305" Height="34" Grid.Column="3"/>
+                    <TextBox x:Name="txtBusqueda" HorizontalAlignment="Left" Margin="1,96,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Column="3"/>
+                    <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="162,96,0,0" VerticalAlignment="Top" Height="38" Width="79" Grid.Column="3"/>
+                    <TextBlock x:Name="txtResultadoBusqueda" HorizontalAlignment="Left" Margin="10,182,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="57" Width="160" Grid.Column="3"/>
+                    <ProgressBar x:Name="progressIteraciones" HorizontalAlignment="Left" Height="47" Margin="293,172,0,0" VerticalAlignment="Top" Width="172" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
                         <ProgressBar.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -39,16 +45,21 @@
             </TabItem>
             <TabItem Header="Ordenamiento">
                 <Grid Background="#FFE5E5E5">
-                    <ComboBox x:Name="comboTipoOrdenamiento" HorizontalAlignment="Left" Margin="16,19,0,0" VerticalAlignment="Top" Width="469" Height="59"/>
-                    <Button x:Name="bnOrdenar" Content="Ordenar" HorizontalAlignment="Left" Margin="29,97,0,0" VerticalAlignment="Top" Height="35" Width="126"/>
-                    <ListView x:Name="listViewOrdenados" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="319,130,111,104">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="77*"/>
+                        <ColumnDefinition Width="707*"/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="comboTipoOrdenamiento" HorizontalAlignment="Left" Margin="6,19,0,0" VerticalAlignment="Top" Width="469" Height="59" Grid.ColumnSpan="2" Grid.Column="1"/>
+                    <Button x:Name="bnOrdenar" Content="Ordenar" HorizontalAlignment="Left" Margin="19,97,0,0" VerticalAlignment="Top" Height="35" Width="126" Click="bnOrdenar_Click" Grid.ColumnSpan="2" Grid.Column="1"/>
+                    <ListView x:Name="listViewOrdenados" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="232,130,111,104" Grid.Column="2">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn/>
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <Canvas x:Name="canvasGrafico" Margin="115,164,574,92">
+                    <Canvas x:Name="canvasGrafico" Margin="28,164,574,92" Grid.Column="2">
                         <Rectangle Height="83" Canvas.Left="10" Stroke="Red" Canvas.Top="28" Width="85"/>
                     </Canvas>
                 </Grid>

@@ -19,9 +19,27 @@ namespace GestorProductosWPF
     /// </summary>
     public partial class AgregarProductoWindow : Window
     {
+        public Producto Producto { get; set; }
+
         public AgregarProductoWindow()
         {
             InitializeComponent();
+        }
+
+        private void btnGuardar_Click(object sender, RoutedEventArgs e)
+        {
+            Producto = new Producto
+            {
+                Id = int.Parse(txtid.Text),
+                CodigoBarras= txtCodigoBarras.Text,
+                Nombre = txtNombre.Text,
+                Categoria = txtCategoria.Text,
+                Precio = (double)decimal.Parse(txtPrecio.Text),
+                Stock = int.Parse(txtStock.Text),
+            };
+
+            this.DialogResult = true;
+            this.Close();
         }
     }
 }
