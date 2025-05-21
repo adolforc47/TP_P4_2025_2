@@ -79,7 +79,7 @@ namespace GestorProductosWPF
             });
         }
 
-        private void btnBuscar_Click(object sender, RoutedEventArgs e)
+        /*private void btnBuscar_Click(object sender, RoutedEventArgs e)
         {
             string criterio = comboTipoBusqueda.SelectedItem.ToString();
             string valor = txtBusqueda.Text;
@@ -103,7 +103,7 @@ namespace GestorProductosWPF
                     MostrarResultadoBusqueda(productoCodigo, 1);
                 break;
             }
-        }
+        }*/
 
         private void MostrarResultadoBusqueda(Producto producto, int iteraciones)
         {
@@ -184,7 +184,7 @@ namespace GestorProductosWPF
             }
         }
 
-        private void bnOrdenar_Click(object sender, RoutedEventArgs e)
+        private void bnOrdenar_Click(object sender, RoutedEventArgs e) //Completar.
         {
             List<Producto> productos = new List<Producto>(gestor.ObtenerListaProductos());
 
@@ -202,6 +202,32 @@ namespace GestorProductosWPF
 
                 case "Precio":
                     OrdenadorSimplificado.QuickSortPorPrecio(productos);
+                    break;
+            }
+        }
+
+        private void btnBuscar_Click_1(object sender, RoutedEventArgs e)
+        {
+            string criterio = comboTipoBusqueda.SelectedItem.ToString();
+            string valor = txtBusqueda.Text;
+
+            switch (criterio)
+            {
+                case "ID":
+                    if (int.TryParse(valor, out int id))
+                    {
+                        var (producto, iteraciones) = BusquedaSimplificado.BusquedaSecuencialNombre(gestor.ObtenerListaProductos(), valor);
+                    }
+                    break;
+
+                case "Nombre":
+                    var (productoNombre, iteracionesNombre) = BusquedaSimplificado.BusquedaSecuencialNombre(gestor.ObtenerListaProductos(), valor);
+                    MostrarResultadoBusqueda(productoNombre, iteracionesNombre);
+                    break;
+
+                case "Codigo de Barras":
+                    Producto productoCodigo = gestor.BuscarPorCodigo(valor);
+                    MostrarResultadoBusqueda(productoCodigo, 1);
                     break;
             }
         }
