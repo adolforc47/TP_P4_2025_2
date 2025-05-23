@@ -22,7 +22,7 @@ namespace GestorProductosWPF
             dataGridProductos.ItemsSource = gestor.ObtenerListaProductos();
             comboTipoBusqueda.Items.Add("ID");
             comboTipoBusqueda.Items.Add("Nombre");
-            comboTipoBusqueda.Items.Add("Codigo de barras");
+            comboTipoBusqueda.Items.Add("Codigo de Barras");
             comboTipoBusqueda.SelectedIndex = 0;
 
             comboCriterioOrden.Items.Add("ID");
@@ -149,7 +149,7 @@ namespace GestorProductosWPF
                 TextBlock etiqueta = new TextBlock
                 {
                     Text = productos[i].Nombre,
-                    Margin = new Thickness(i * 40, canvasGrafico.ActualHeight - 20, 0, 0)
+                    Margin = new Thickness(i * 40, canvasGrafico.ActualHeight + 16, 0, 0)
                 };
 
                 canvasGrafico.Children.Add(etiqueta);

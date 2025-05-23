@@ -13,7 +13,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="agregar-producto.png" />
+    <None Remove="buscar.png" />
+    <None Remove="inventario.png" />
+    <None Remove="planificacion.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="Program.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="agregar-producto.png" />
+    <Resource Include="buscar.png" />
+    <Resource Include="inventario.png" />
+    <Resource Include="planificacion.png" />
   </ItemGroup>
 
 </Project>

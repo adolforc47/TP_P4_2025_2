@@ -9,29 +9,40 @@
     <Grid Margin="0,0,0,-6">
         <TabControl>
             <TabItem x:Name="Inventario" Header="Inventario">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="Teal">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="87*"/>
                         <ColumnDefinition Width="310*"/>
                     </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="dataGridProductos" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="2"/>
-                    <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="38,237,0,0" VerticalAlignment="Top" Height="42" Width="89" Grid.Column="1" Click="btnAgregar_Click"/>
-                    <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="305,242,0,0" VerticalAlignment="Top" Height="37" Width="97" Grid.Column="1" Click="btnEliminar_Click"/>
+                    <DataGrid x:Name="dataGridProductos" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="2" VerticalAlignment="Top">
+                        <DataGrid.Background>
+                            <ImageBrush/>
+                        </DataGrid.Background>
+                    </DataGrid>
+                    <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="38,237,0,0" VerticalAlignment="Top" Height="42" Width="89" Grid.Column="1" Click="btnAgregar_Click" Background="#FF95F561" FontWeight="Bold"/>
+                    <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="305,242,0,0" VerticalAlignment="Top" Height="37" Width="97" Grid.Column="1" Click="btnEliminar_Click" Background="#FFE86969" FontWeight="Bold"/>
+                    <Canvas HorizontalAlignment="Left" Height="216" Margin="10,150,0,0" VerticalAlignment="Top" Width="183" Grid.ColumnSpan="2">
+                        <Canvas.Background>
+                            <ImageBrush ImageSource="/inventario.png"/>
+                        </Canvas.Background>
+                    </Canvas>
                 </Grid>
             </TabItem>
             <TabItem x:Name="Busqueda" Header="Busqueda">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="#FF8DC16A">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="5*"/>
-                        <ColumnDefinition Width="8*"/>
-                        <ColumnDefinition Width="9*"/>
-                        <ColumnDefinition Width="375*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="16*"/>
+                        <ColumnDefinition Width="18*"/>
+                        <ColumnDefinition Width="91*"/>
+                        <ColumnDefinition Width="58*"/>
+                        <ColumnDefinition Width="601*"/>
                     </Grid.ColumnDefinitions>
-                    <ComboBox x:Name="comboTipoBusqueda" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" Width="305" Height="34" Grid.Column="3"/>
-                    <TextBox x:Name="txtBusqueda" HorizontalAlignment="Left" Margin="1,96,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Column="3"/>
-                    <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="162,96,0,0" VerticalAlignment="Top" Height="38" Width="79" Grid.Column="3" Click="btnBuscar_Click_1"/>
-                    <TextBlock x:Name="txtResultadoBusqueda" HorizontalAlignment="Left" Margin="10,182,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="57" Width="160" Grid.Column="3"/>
-                    <ProgressBar x:Name="progressIteraciones" HorizontalAlignment="Left" Height="47" Margin="293,172,0,0" VerticalAlignment="Top" Width="172" RenderTransformOrigin="0.5,0.5" Grid.Column="3">
+                    <ComboBox x:Name="comboTipoBusqueda" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" Width="305" Height="34" Grid.Column="3" Grid.ColumnSpan="3"/>
+                    <TextBox x:Name="txtBusqueda" HorizontalAlignment="Left" Margin="1,96,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Column="3" Background="#FFBFCCE0" Grid.ColumnSpan="2"/>
+                    <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="13,96,0,0" VerticalAlignment="Top" Height="38" Width="79" Grid.Column="5" Click="btnBuscar_Click_1" Background="#FF9BC4DE" FontWeight="Bold"/>
+                    <TextBlock x:Name="txtResultadoBusqueda" HorizontalAlignment="Left" Margin="10,182,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="57" Width="160" Grid.Column="3" Grid.ColumnSpan="3"/>
+                    <ProgressBar x:Name="progressIteraciones" HorizontalAlignment="Left" Height="47" Margin="144,172,0,0" VerticalAlignment="Top" Width="172" RenderTransformOrigin="0.5,0.5" Grid.Column="5">
                         <ProgressBar.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -41,17 +52,22 @@
                             </TransformGroup>
                         </ProgressBar.RenderTransform>
                     </ProgressBar>
+                    <Canvas Grid.Column="3" HorizontalAlignment="Left" Height="143" Margin="1,239,0,0" VerticalAlignment="Top" Width="135" Grid.ColumnSpan="2">
+                        <Canvas.Background>
+                            <ImageBrush ImageSource="/buscar.png"/>
+                        </Canvas.Background>
+                    </Canvas>
                 </Grid>
             </TabItem>
             <TabItem x:Name="Ordenamiento" Header="Ordenamiento">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="#FFDC9F9F">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="77*"/>
                         <ColumnDefinition Width="707*"/>
                     </Grid.ColumnDefinitions>
                     <ComboBox x:Name="comboCriterioOrden" HorizontalAlignment="Left" Margin="6,19,0,0" VerticalAlignment="Top" Width="469" Height="59" Grid.ColumnSpan="2" Grid.Column="1"/>
-                    <Button x:Name="bnOrdenar" Content="Ordenar" HorizontalAlignment="Left" Margin="19,97,0,0" VerticalAlignment="Top" Height="35" Width="126" Click="bnOrdenar_Click" Grid.ColumnSpan="2" Grid.Column="1"/>
+                    <Button x:Name="bnOrdenar" Content="Ordenar" HorizontalAlignment="Left" Margin="426,31,0,0" VerticalAlignment="Top" Height="35" Width="126" Click="bnOrdenar_Click" Grid.Column="2" Background="Turquoise" FontWeight="Bold"/>
                     <ListView x:Name="listViewOrdenados" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="232,130,111,104" Grid.Column="2">
                         <ListView.View>
                             <GridView>
@@ -59,8 +75,13 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <Canvas x:Name="canvasGrafico" Margin="28,164,574,92" Grid.Column="2">
+                    <Canvas x:Name="canvasGrafico" Margin="27,206,575,50" Grid.Column="2">
                         <Rectangle Height="83" Canvas.Left="10" Stroke="Red" Canvas.Top="28" Width="85"/>
+                    </Canvas>
+                    <Canvas HorizontalAlignment="Left" Height="106" Margin="10,100,0,0" VerticalAlignment="Top" Width="104" Grid.ColumnSpan="2" Grid.Column="1">
+                        <Canvas.Background>
+                            <ImageBrush ImageSource="/planificacion.png"/>
+                        </Canvas.Background>
                     </Canvas>
                 </Grid>
             </TabItem>

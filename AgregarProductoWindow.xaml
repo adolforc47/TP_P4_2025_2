@@ -5,14 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GestorProductosWPF"
         mc:Ignorable="d"
-        Title="AgregarProductoWindow" Height="450" Width="800">
+        Title="AgregarProductoWindow" Height="450" Width="800" Background="#FF94C8D2">
     <Grid>
-        <TextBox x:Name="txtId" HorizontalAlignment="Left" Margin="58,66,0,0" TextWrapping="Wrap" Text="Id" VerticalAlignment="Top" Height="36" Width="137"/>
-        <TextBox x:Name="txtCodigoBarras" HorizontalAlignment="Left" Margin="58,145,0,0" TextWrapping="Wrap" Text="Codigo de Barras" VerticalAlignment="Top" Height="36" Width="137"/>
-        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Margin="58,204,0,0" TextWrapping="Wrap" Text="Nombre" VerticalAlignment="Top" Height="36" Width="137"/>
-        <TextBox x:Name="txtCategoria" HorizontalAlignment="Left" Margin="58,259,0,0" TextWrapping="Wrap" Text="Categoria" VerticalAlignment="Top" Height="36" Width="137"/>
-        <TextBox x:Name="txtPrecio" HorizontalAlignment="Left" Margin="58,308,0,0" TextWrapping="Wrap" Text="Precio" VerticalAlignment="Top" Height="36" Width="137"/>
-        <TextBox x:Name="txtStock" HorizontalAlignment="Left" Margin="58,364,0,0" TextWrapping="Wrap" Text="Stock" VerticalAlignment="Top" Height="36" Width="137"/>
-        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="477,333,0,0" VerticalAlignment="Top" Height="49" Width="138" Click="btnGuardar_Click"/>
+        <TextBox x:Name="txtId" HorizontalAlignment="Left" Margin="58,66,0,0" TextWrapping="Wrap" Text="Id" VerticalAlignment="Top" Height="36" Width="137" Background="#FFFFF4E1"/>
+        <TextBox x:Name="txtCodigoBarras" HorizontalAlignment="Left" Margin="58,145,0,0" TextWrapping="Wrap" Text="Codigo de Barras" VerticalAlignment="Top" Height="36" Width="137" Background="#FFFFF4E1"/>
+        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Margin="58,204,0,0" TextWrapping="Wrap" Text="Nombre" VerticalAlignment="Top" Height="36" Width="137" Background="#FFFFF4E1"/>
+        <TextBox x:Name="txtCategoria" HorizontalAlignment="Left" Margin="58,259,0,0" TextWrapping="Wrap" Text="Categoria" VerticalAlignment="Top" Height="36" Width="137" Background="#FFFFF4E1"/>
+        <TextBox x:Name="txtPrecio" HorizontalAlignment="Left" Margin="58,308,0,0" TextWrapping="Wrap" Text="Precio" VerticalAlignment="Top" Height="36" Width="137" Background="#FFFFF4E1"/>
+        <TextBox x:Name="txtStock" HorizontalAlignment="Left" Margin="58,364,0,0" TextWrapping="Wrap" Text="Stock" VerticalAlignment="Top" Height="36" Width="137" Background="#FFFFF4E1"/>
+        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="477,333,0,0" VerticalAlignment="Top" Height="49" Width="138" Click="btnGuardar_Click" Background="#FFFFBBA8" FontWeight="Bold"/>
+        <Canvas HorizontalAlignment="Left" Height="133" Margin="457,145,0,0" VerticalAlignment="Top" Width="158">
+            <Canvas.Background>
+                <ImageBrush ImageSource="/agregar-producto.png"/>
+            </Canvas.Background>
+        </Canvas>
     </Grid>
 </Window>
