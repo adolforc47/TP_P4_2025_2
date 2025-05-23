@@ -8,7 +8,7 @@
         Title="Gestor De Productos" Height="450" Width="800" Background="#FFFFDE00">
     <Grid Margin="0,0,0,-6">
         <TabControl>
-            <TabItem Header="Inventario">
+            <TabItem x:Name="Inventario" Header="Inventario">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="87*"/>
@@ -19,7 +19,7 @@
                     <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="305,242,0,0" VerticalAlignment="Top" Height="37" Width="97" Grid.Column="1" Click="btnEliminar_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="LL" Header="Busqueda">
+            <TabItem x:Name="Busqueda" Header="Busqueda">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="5*"/>
@@ -43,14 +43,14 @@
                     </ProgressBar>
                 </Grid>
             </TabItem>
-            <TabItem Header="Ordenamiento">
+            <TabItem x:Name="Ordenamiento" Header="Ordenamiento">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="77*"/>
                         <ColumnDefinition Width="707*"/>
                     </Grid.ColumnDefinitions>
-                    <ComboBox x:Name="comboTipoOrdenamiento" HorizontalAlignment="Left" Margin="6,19,0,0" VerticalAlignment="Top" Width="469" Height="59" Grid.ColumnSpan="2" Grid.Column="1"/>
+                    <ComboBox x:Name="comboCriterioOrden" HorizontalAlignment="Left" Margin="6,19,0,0" VerticalAlignment="Top" Width="469" Height="59" Grid.ColumnSpan="2" Grid.Column="1"/>
                     <Button x:Name="bnOrdenar" Content="Ordenar" HorizontalAlignment="Left" Margin="19,97,0,0" VerticalAlignment="Top" Height="35" Width="126" Click="bnOrdenar_Click" Grid.ColumnSpan="2" Grid.Column="1"/>
                     <ListView x:Name="listViewOrdenados" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="232,130,111,104" Grid.Column="2">
                         <ListView.View>

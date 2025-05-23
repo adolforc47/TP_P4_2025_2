@@ -1,12 +1,12 @@
 ﻿public class GestorProductos
-{ 
+{
     //Lista para mntener el orden de insercion y ordenar
 
     public List<Producto> listaProductos = new List<Producto>();
 
     //Diccionario para busquedas rapidas
 
-    public Dictionary<string,Producto> diccionarioProductos = new Dictionary<string,Producto>();
+    public Dictionary<string, Producto> diccionarioProductos = new Dictionary<string, Producto>();
 
     //Metodos
 
@@ -67,7 +67,7 @@
 
         foreach (var p in listaProductos)
         {
-            if (p.Categoria.Equals(categoria,StringComparison.OrdinalIgnoreCase))
+            if (p.Categoria.Equals(categoria, StringComparison.OrdinalIgnoreCase))
             {
                 Console.WriteLine(p);
             }

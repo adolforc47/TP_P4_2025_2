@@ -38,10 +38,6 @@
         productos.AddRange(menores);
         productos.Add(pivote);
         productos.AddRange(mayores);
-        /*foreach (Producto p in productos)
-        {
-            Console.WriteLine(p);
-        }*/
     }
 
 
@@ -83,10 +79,6 @@
         productos.AddRange(menores);
         productos.Add(pivote);
         productos.AddRange(mayores);
-        /*foreach (Producto p in productos)
-        {
-            Console.WriteLine(p);
-        }*/
     }
 
     // Merge Sort ordena por nombre
@@ -123,7 +115,7 @@
 
         //Comparamos y ordenamos
 
-        while (i<izquierda.Count && j<derecha.Count)
+        while (i < izquierda.Count && j < derecha.Count)
         {
             if (string.Compare(izquierda[i].Nombre, derecha[j].Nombre) < 0)
             {

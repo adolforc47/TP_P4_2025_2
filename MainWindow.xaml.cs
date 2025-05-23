@@ -11,9 +11,6 @@ using System.Windows.Shapes;
 
 namespace GestorProductosWPF
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         private GestorProductos gestor = new GestorProductos();
@@ -21,25 +18,20 @@ namespace GestorProductosWPF
         public MainWindow()
         {
             InitializeComponent();
-            CargarDatosInicales();
-
+            CargarDatosIniciales();
             dataGridProductos.ItemsSource = gestor.ObtenerListaProductos();
-
             comboTipoBusqueda.Items.Add("ID");
             comboTipoBusqueda.Items.Add("Nombre");
             comboTipoBusqueda.Items.Add("Codigo de barras");
-
             comboTipoBusqueda.SelectedIndex = 0;
 
-
-            //comboTipoOrdenamiento.ItemsSource = gestor.ObtenerListaProductos();
-            comboTipoOrdenamiento.Items.Add("Id");
-            comboTipoOrdenamiento.Items.Add("Nombre");
-            comboTipoOrdenamiento.Items.Add("Precio");
-
-            comboTipoOrdenamiento.SelectedIndex = 0;
+            comboCriterioOrden.Items.Add("ID");
+            comboCriterioOrden.Items.Add("Nombre");
+            comboCriterioOrden.Items.Add("Precio");
+            comboCriterioOrden.SelectedIndex = 0;
         }
-        private void CargarDatosInicales()
+
+        private void CargarDatosIniciales()
         {
             gestor.AgregarProducto(new Producto
             {
@@ -79,7 +71,7 @@ namespace GestorProductosWPF
             });
         }
 
-        /*private void btnBuscar_Click(object sender, RoutedEventArgs e)
+        private void btnBuscar_Click_1(object sender, RoutedEventArgs e)
         {
             string criterio = comboTipoBusqueda.SelectedItem.ToString();
             string valor = txtBusqueda.Text;
@@ -89,33 +81,55 @@ namespace GestorProductosWPF
                 case "ID":
                     if (int.TryParse(valor, out int id))
                     {
-                        var (producto, iteraciones) = BusquedaSimplificado.BusquedaSecuencialNombre(gestor.ObtenerListaProductos(), valor);
+                        var (producto, iteraciones) = BusquedaSimplificado.BusquedaBinaria(gestor.ObtenerListaProductos(), id);
+                        MostrarResultadoBusqueda(producto, iteraciones);
                     }
-                break;
-
+                    break;
                 case "Nombre":
-                    var (productoNombre, iteracionesNombre) = BusquedaSimplificado.BusquedaSecuencialNombre(gestor.ObtenerListaProductos(), valor);
-                    MostrarResultadoBusqueda(productoNombre, iteracionesNombre);
-                break;
-
+                    var (productoNombre, iterNombre) = BusquedaSimplificado.BusquedaSecuencialNombre(gestor.ObtenerListaProductos(), valor);
+                    MostrarResultadoBusqueda(productoNombre, iterNombre);
+                    break;
                 case "Codigo de Barras":
                     Producto productoCodigo = gestor.BuscarPorCodigo(valor);
                     MostrarResultadoBusqueda(productoCodigo, 1);
-                break;
+                    break;
             }
-        }*/
+        }
 
         private void MostrarResultadoBusqueda(Producto producto, int iteraciones)
         {
-            txtResultadoBusqueda.Text = producto.ToString() ?? "Producto no encontrado";
-            progressIteraciones.Value = iteraciones*5;
+            txtResultadoBusqueda.Text = producto?.ToString() ?? "Producto no encontrado";
+            progressIteraciones.Value = iteraciones;
+        }
+        private void bnOrdenar_Click(object sender, RoutedEventArgs e) //Completar.
+        {
+            List<Producto> productos = new List<Producto>(gestor.ObtenerListaProductos());
+            string criterio = comboCriterioOrden.SelectedItem.ToString();
+
+            switch (criterio)
+            {
+                case "ID":
+                    OrdenadorSimplificado.QuickSortId(productos);
+                    break;
+
+                case "Nombre":
+                    productos = OrdenadorSimplificado.MergeSortPorNombre(productos);
+                    break;
+
+                case "Precio":
+                    OrdenadorSimplificado.QuickSortPorPrecio(productos);
+                    break;
+            }
+
+            listViewOrdenados.ItemsSource = productos;
+            DibujarGraficoBarras(productos);
         }
 
 
         private void DibujarGraficoBarras(List<Producto> productos)
         {
             canvasGrafico.Children.Clear();
-            double maxPrecio = productos.Max(x => x.Precio);
+            double maxPrecio = productos.Max(p => p.Precio);
             double escala = canvasGrafico.ActualHeight/maxPrecio;
 
             for (int i = 0; i < productos.Count; i++)
@@ -145,7 +159,6 @@ namespace GestorProductosWPF
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
             var ventanaAgregar = new AgregarProductoWindow();
-
             if (ventanaAgregar.ShowDialog() ==true)
             {
                 Producto nuevoProducto = ventanaAgregar.Producto;
@@ -174,61 +187,13 @@ namespace GestorProductosWPF
                 {
                     dataGridProductos.ItemsSource = null;
                     dataGridProductos.ItemsSource = gestor.ObtenerListaProductos();
-                    MessageBox.Show("Error", "Eliminado", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Prodcuto eliminado", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
                     MessageBox.Show("Selecciona un producto", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
 
                 }
-            }
-        }
-
-        private void bnOrdenar_Click(object sender, RoutedEventArgs e) //Completar.
-        {
-            List<Producto> productos = new List<Producto>(gestor.ObtenerListaProductos());
-
-            string criterio = comboTipoOrdenamiento.Text.ToString();
-
-            switch (criterio)
-            {
-                case "ID":
-                    OrdenadorSimplificado.QuickSortId(productos);
-                    break;
-
-                case "Nombre":
-                    OrdenadorSimplificado.MergeSortPorNombre(productos);
-                    break;
-
-                case "Precio":
-                    OrdenadorSimplificado.QuickSortPorPrecio(productos);
-                    break;
-            }
-        }
-
-        private void btnBuscar_Click_1(object sender, RoutedEventArgs e)
-        {
-            string criterio = comboTipoBusqueda.SelectedItem.ToString();
-            string valor = txtBusqueda.Text;
-
-            switch (criterio)
-            {
-                case "ID":
-                    if (int.TryParse(valor, out int id))
-                    {
-                        var (producto, iteraciones) = BusquedaSimplificado.BusquedaSecuencialNombre(gestor.ObtenerListaProductos(), valor);
-                    }
-                    break;
-
-                case "Nombre":
-                    var (productoNombre, iteracionesNombre) = BusquedaSimplificado.BusquedaSecuencialNombre(gestor.ObtenerListaProductos(), valor);
-                    MostrarResultadoBusqueda(productoNombre, iteracionesNombre);
-                    break;
-
-                case "Codigo de Barras":
-                    Producto productoCodigo = gestor.BuscarPorCodigo(valor);
-                    MostrarResultadoBusqueda(productoCodigo, 1);
-                    break;
             }
         }
     }

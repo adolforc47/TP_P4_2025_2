@@ -2,7 +2,7 @@
 public class BusquedaSimplificado
 {
     //Busqueda Binaria
-    public static (Producto,int) BusquedaBinaria(List<Producto>productos, int idBuscado)
+    public static (Producto, int) BusquedaBinaria(List<Producto> productos, int idBuscado)
     {
         int inicio = 0;
         int fin = productos.Count - 1;
@@ -10,13 +10,13 @@ public class BusquedaSimplificado
 
         //Ciclo de busqueda
 
-        while (inicio<=fin)
+        while (inicio <= fin)
         {
             iteraciones++;
 
             //Obtener el producto de la mitad
 
-            int mitad = (inicio +fin)/2;
+            int mitad = (inicio + fin) / 2;
 
             //Comparar con el ID buscado
             if (productos[mitad].Id == idBuscado)
@@ -26,7 +26,7 @@ public class BusquedaSimplificado
 
             //Ajustar los limites de busqueda
 
-            if (productos[mitad].Id<idBuscado)
+            if (productos[mitad].Id < idBuscado)
             {
                 inicio = mitad + 1;
             }
@@ -54,7 +54,7 @@ public class BusquedaSimplificado
 
             //Comparar el elemento actual con el buscado
             if (producto.Id == idBuscado)
-            { 
+            {
                 return (producto, iteraciones);
             }
         }
@@ -73,7 +73,7 @@ public class BusquedaSimplificado
             iteraciones++;
 
             //Comparar el elemento actual con el buscado
-            if (producto.Nombre.Equals(nombre,StringComparison.OrdinalIgnoreCase))
+            if (producto.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase))
             {
                 return (producto, iteraciones);
             }

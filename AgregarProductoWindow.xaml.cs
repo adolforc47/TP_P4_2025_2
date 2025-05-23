@@ -30,7 +30,7 @@ namespace GestorProductosWPF
         {
             Producto = new Producto
             {
-                Id = int.Parse(txtid.Text),
+                Id = int.Parse(txtId.Text),
                 CodigoBarras= txtCodigoBarras.Text,
                 Nombre = txtNombre.Text,
                 Categoria = txtCategoria.Text,
